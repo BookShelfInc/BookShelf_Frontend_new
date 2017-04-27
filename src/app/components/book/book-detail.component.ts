@@ -53,7 +53,7 @@ export class BookDetailComponent implements OnInit{
         if (currentUser && currentUser.token) {
             console.log('here');
             const review: Review = {
-                user: currentUser.user.id,
+                user: currentUser.user,
                 book: this.book.id,
                 review: this.model.review
             };

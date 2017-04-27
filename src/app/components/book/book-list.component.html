@@ -1,0 +1,15 @@
+<div class="post-container" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="15px" fxFlex="60" fxFlexOffset="20">
+      <div *ngFor="let book of books">
+        <md-card>
+            <md-card-header>
+                <md-card-title><h1>{{ book.title }}</h1></md-card-title>
+            </md-card-header>
+            <img src="http://fit.kbtu.kz:8080{{ book.cover }}" style="width:200px; height:300px">
+            <md-card-content>
+                <h3>Author - {{ book.author.first_name }} {{ book.author.last_name }}</h3>
+                <h4>Genre - {{ book.genre }}</h4>
+            </md-card-content>
+            <button md-button color="warn" (click)="goToDetail(book)">Book Detail</button>
+        </md-card>
+      </div>
+</div>

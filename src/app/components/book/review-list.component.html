@@ -1,0 +1,8 @@
+<div *ngFor="let review of reviews">
+    <md-card style="width: 100%;">
+        <md-card-subtitle>
+            {{ review.user.first_name }} {{ review.user.last_name }}
+        </md-card-subtitle>
+        <md-card-content> {{ review.review }} </md-card-content>
+    </md-card>
+</div>

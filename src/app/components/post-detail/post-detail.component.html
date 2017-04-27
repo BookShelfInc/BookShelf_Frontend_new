@@ -1,0 +1,41 @@
+<div *ngIf="post" class="post-container" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="15px" fxFlex="60" fxFlexOffset="20">
+    <md-card style="width: 100%;">
+        <md-card-title> {{ post.title }} </md-card-title>
+        <md-card-subtitle>
+            By {{ post.author.first_name }} {{ post.author.last_name }} <br> {{ post.publish_date }}
+        </md-card-subtitle>
+        <md-card-content> {{ post.content }} </md-card-content>
+
+        <md-card-actions>
+            <button md-ripple="white" md-button>
+                <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 
+                <md-icon *ngIf="!post.isLiked">favorite</md-icon> 
+                3
+            </button>
+            <button md-button>
+                <div class="material-icons mdl-badge mdl-badge--overlap" attr.data-badge="{{ post.id }}"><md-icon>comments
+                </md-icon></div>
+                {{ post.comments.length }}
+            </button>
+        </md-card-actions>
+    </md-card>
+    <div *ngIf="can">
+        <h2>Your "Opinion":</h2>
+        <div class="form">
+            <md-input-container style="width: 100%;">
+                    <input mdInput [(ngModel)]="model.comment" placeholder="Comment">
+                </md-input-container>
+            <div class="post-container" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="15px" fxFlex="60" fxFlexOffset="20">
+                <button md-fab (click)="addComment()" ><md-icon>check</md-icon></button>
+            </div>
+        </div>
+    </div>
+    <div *ngFor="let comment of post.comments">
+        <md-card style="width: 100%;">
+            <md-card-subtitle>
+                {{ comment.author.first_name }} {{ comment.author.last_name }} <br> {{ comment.publish_date }}
+            </md-card-subtitle>
+            <md-card-content> {{ comment.content }} </md-card-content>
+        </md-card>
+    </div>
+</div>

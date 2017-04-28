@@ -23,9 +23,8 @@ export class BlogListComponent implements OnInit {
     let currentUser = JSON.parse(localStorage.getItem('user'));
     if (currentUser && currentUser.token) {
       this.can = true;
-    }
-
-    this.blogService.getAllPosts().subscribe(
+      
+      this.blogService.getAllPosts().subscribe(
       data => {
         this.posts = data as Post[];
         for(var i=0; i<this.posts.length; i++){
@@ -54,6 +53,32 @@ export class BlogListComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+    else{
+      this.blogService.getAllPosts().subscribe(
+      data => {
+        this.posts = data as Post[];
+        for(var i=0; i<this.posts.length; i++){
+          var exist = false;
+          const postIL: PostIsLiked = {
+            id: this.posts[i].id,
+            title: this.posts[i].title,
+            content: this.posts[i].content,
+            publish_date: this.posts[i].publish_date,
+            author: this.posts[i].author,
+            comments: this.posts[i].comments.length,
+            upvotes: this.posts[i].upvotes.length,
+            is_liked: exist,
+          }
+          this.postsIsLiked.push(postIL);
+        }
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    }
   }
 
   goToDetail(post: Post){

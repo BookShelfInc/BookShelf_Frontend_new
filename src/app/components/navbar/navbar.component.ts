@@ -21,8 +21,6 @@ export class NavbarComponent implements OnInit {
   constructor(public dialog: MdDialog, public authService: AuthorizationService, 
               public bookService: BookService) {
     this.checkUser();
-
-    
   }
 
   checkUser(){

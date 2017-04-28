@@ -3,7 +3,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Post, PostCreate } from '../models/post';
-import { CommentCreate } from '../models/comment';
+import { CommentCreate, Comment } from '../models/comment';
 
 @Injectable()
 export class BlogService {

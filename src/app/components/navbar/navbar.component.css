@@ -17,3 +17,7 @@ button-row {
   flex: 1 0 auto;
   flex-direction: column;
 }
+
+.menu-button-margin {
+  margin-right: 16px
+}

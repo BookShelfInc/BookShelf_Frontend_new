@@ -17,6 +17,7 @@ import { AuthorizationService } from './services/authorization.service';
 import { BookService } from './services/book.service';
 import { AuthorService } from './services/author.service';
 import { BlogService } from './services/blog.service';
+import { BazaarService } from './services/bazaar.service';
 
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -25,6 +26,10 @@ import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostCreateComponent } from './components/post-create/post-create.component';
 import { AuthorListComponent } from './components/author-list/author-list.component';
+import { BazaarListComponent } from './components/bazaar-list/bazaar-list.component';
+import { BazaarDialog } from './components/bazaar-list/bazaar-list.component';
+import { BazaarDetailComponent } from './components/bazaar-detail/bazaar-detail.component';
+import { BazaarCreateComponent } from './components/bazaar-create/bazaar-create.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +45,10 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
     PostDetailComponent,
     PostCreateComponent,
     AuthorListComponent,
+    BazaarListComponent,
+    BazaarDetailComponent,
+    BazaarDialog,
+    BazaarCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,12 +65,14 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
       { path: 'blog', component: BlogListComponent },
       { path: 'blog/post/:id', component: PostDetailComponent },
       { path: 'blog/create', component: PostCreateComponent },
+      { path: 'bazaar', component: BazaarListComponent },
+      { path: 'bazaar/create', component: BazaarCreateComponent },
       { path: '', redirectTo: 'books', pathMatch: 'full'},
       { path: '**', redirectTo: 'books', pathMatch: 'full'},     
     ])
   ],
-  entryComponents: [AuthComponent, AuthRegisterComponent],
-  providers: [AuthorizationService, BookService, AuthorService, BlogService],
+  entryComponents: [AuthComponent, AuthRegisterComponent, BazaarDialog, BazaarListComponent],
+  providers: [AuthorizationService, BookService, AuthorService, BlogService, BazaarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

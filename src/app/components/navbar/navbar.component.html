@@ -3,10 +3,21 @@
     <button routerLink="/books" md-button>Book List</button>
     <button routerLink="/author" md-button>Author</button>
     <button routerLink="/blog" md-button>Blogs</button>
+    <button md-button [mdMenuTriggerFor]="menu">
+      Bazaar <md-icon>keyboard_arrow_down</md-icon> 
+    </button>
+    <md-menu #menu="mdMenu">
+      <button routerLink="/bazaar" md-menu-item>
+        <span>Bazaar ads</span>
+      </button>
+      <button routerLink="/bazaar/create" md-menu-item>
+        <span>Create ad</span>
+      </button>
+  </md-menu>
   </div>
   <div *ngIf="loggedIn()" class="button-row">
     <button md-button>
-      I am, {{ username }} <md-icon>keyboard_arrow_down</md-icon>
+      I am, {{ username }}
     </button>
   </div>
   <div class="button-row">

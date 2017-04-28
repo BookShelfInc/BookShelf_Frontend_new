@@ -1,0 +1,17 @@
+<div *ngIf="ads" class="post-container">
+  <div *ngFor="let ad of ads" fxLayoutAlign="space-around" fxFlex="24" fxFlexOffset="7" fxLayoutGap="15px" style="margin-bottom: 5px;">
+    <md-card style="width: 100%;">
+        <md-card-title> {{ ad.book.title }} </md-card-title>
+        <md-card-subtitle>
+            Added by {{ ad.user.first_name }} {{ ad.user.last_name }}
+        </md-card-subtitle>
+        <img src="http://fit.kbtu.kz:8080{{ ad.book.cover }}" style="width:120px; height:200px;">
+        <md-card-content> {{ ad.price }} </md-card-content>
+        <md-card-actions>
+            <button (click)="openDialog(ad)" md-ripple="white" md-button>
+              Read more
+            </button>
+        </md-card-actions>
+    </md-card>
+  </div>
+</div>

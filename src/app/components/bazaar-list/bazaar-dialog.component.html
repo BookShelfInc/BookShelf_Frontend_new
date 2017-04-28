@@ -1,0 +1,8 @@
+<div *ngIf="ad" class="post-container">
+    <h1 md-dialog-title> {{ ad.book.title }} </h1>
+    <div MdDialogContent class="dialog-content">
+        <p> Added by {{ ad.user.first_name }} {{ ad.user.last_name }} </p>
+        <img src="http://fit.kbtu.kz:8080{{ ad.book.cover }}" style="width:120px; height:200px;">
+        <h1> {{ ad.price }} tenge</h1>
+    </div>
+</div>

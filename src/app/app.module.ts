@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AuthComponent, AuthRegisterComponent } from './components/auth/auth.component';
@@ -17,7 +17,8 @@ import { AuthorizationService } from './services/authorization.service';
 import { BookService } from './services/book.service';
 import { AuthorService } from './services/author.service';
 import { BlogService } from './services/blog.service';
-import { UserService } from './services/user.service'; 
+import { UserService } from './services/user.service';
+import { BazaarService } from './services/bazaar.service';
 
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -26,10 +27,16 @@ import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostCreateComponent } from './components/post-create/post-create.component';
 import { AuthorListComponent } from './components/author-list/author-list.component';
+
 import { UserComponent } from './components/user/user.component';
 import { WishListComponent } from './components/wish-list/wish-list.component';
 import { QuoteComponent } from './components/quote/quote.component';
 import { AddQuoteComponent } from './components/add-quote/add-quote.component';
+
+import { BazaarListComponent } from './components/bazaar-list/bazaar-list.component';
+import { BazaarDialog } from './components/bazaar-list/bazaar-list.component';
+import { BazaarDetailComponent } from './components/bazaar-detail/bazaar-detail.component';
+import { BazaarCreateComponent } from './components/bazaar-create/bazaar-create.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +55,11 @@ import { AddQuoteComponent } from './components/add-quote/add-quote.component';
     UserComponent,
     WishListComponent,
     QuoteComponent,
-    AddQuoteComponent
+    AddQuoteComponent,
+    BazaarListComponent,
+    BazaarDetailComponent,
+    BazaarDialog,
+    BazaarCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,12 +78,14 @@ import { AddQuoteComponent } from './components/add-quote/add-quote.component';
       { path: 'blog/create', component: PostCreateComponent },
       { path: 'my_page', component: UserComponent },
       { path: 'my_page/create-quote', component: AddQuoteComponent },
+      { path: 'bazaar', component: BazaarListComponent },
+      { path: 'bazaar/create', component: BazaarCreateComponent },
       { path: '', redirectTo: 'books', pathMatch: 'full'},
-      { path: '**', redirectTo: 'books', pathMatch: 'full'},     
+      { path: '**', redirectTo: 'books', pathMatch: 'full'},
     ])
   ],
-  entryComponents: [AuthComponent, AuthRegisterComponent],
-  providers: [AuthorizationService, BookService, AuthorService, BlogService, UserService],
+  entryComponents: [AuthComponent, AuthRegisterComponent, BazaarDialog, BazaarListComponent],
+  providers: [AuthorizationService, BookService, AuthorService, BlogService, BazaarService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

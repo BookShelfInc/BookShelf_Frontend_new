@@ -16,6 +16,7 @@ export class PostDetailComponent implements OnInit {
   public post: Post;
   can = false;
   model: any = {}
+  written = false;
 
   constructor(private _route: ActivatedRoute,
               private blogService: BlogService,
@@ -49,6 +50,7 @@ export class PostDetailComponent implements OnInit {
             };
             console.log(comment);
             console.log(this.blogService.postComment(comment));
+            this.written = true;
         }
         console.log(this.model.review);
     }

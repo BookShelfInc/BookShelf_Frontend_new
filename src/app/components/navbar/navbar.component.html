@@ -3,7 +3,7 @@
     <button routerLink="/books" md-button>Book List</button>
     <button routerLink="/author" md-button>Author</button>
     <button routerLink="/blog" md-button>Blogs</button>
-    <button routerLink="/my_page" md-button>My Page</button>
+    <button *ngIf="loggedIn()" routerLink="/my_page" md-button>My Page</button>
     <button md-button [mdMenuTriggerFor]="menu">
       Bazaar <md-icon>keyboard_arrow_down</md-icon>
     </button>
@@ -11,7 +11,7 @@
       <button routerLink="/bazaar" md-menu-item>
         <span>Bazaar ads</span>
       </button>
-      <button routerLink="/bazaar/create" md-menu-item>
+      <button *ngIf="loggedIn()" routerLink="/bazaar/create" md-menu-item>
         <span>Create ad</span>
       </button>
   </md-menu>
@@ -22,7 +22,7 @@
     </button>
   </div>
   <div class="button-row">
-    <button md-button (click)="openSignupDialog()">Register</button>
+    <button *ngIf="!loggedIn()" md-button (click)="openSignupDialog()">Register</button>
     <button *ngIf="!username" md-button (click)="openLoginDialog()"> Log in</button>
     <button *ngIf="username" md-button (click)="logout()">Log out</button>
   </div>

@@ -84,7 +84,7 @@ import { BazaarCreateComponent } from './components/bazaar-create/bazaar-create.
       { path: '**', redirectTo: 'books', pathMatch: 'full'},
     ])
   ],
-  entryComponents: [AuthComponent, AuthRegisterComponent, BazaarDialog, BazaarListComponent],
+  entryComponents: [AuthComponent, AuthRegisterComponent, BazaarDialog, BazaarListComponent, BookListComponent],
   providers: [AuthorizationService, BookService, AuthorService, BlogService, BazaarService, UserService],
   bootstrap: [AppComponent]
 })

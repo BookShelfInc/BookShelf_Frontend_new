@@ -7,15 +7,17 @@
         <md-card-content> {{ post.content }} </md-card-content>
 
         <md-card-actions>
-            <button md-ripple="white" md-button>
-                <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 
-                <md-icon *ngIf="!post.isLiked">favorite</md-icon> 
-                3
+            <button *ngIf="canLike" md-ripple="white" md-button (click)="addUpvote()">
+              <md-icon *ngIf="!liked">favorite</md-icon>
+              <md-icon *ngIf="liked" style="color: red">favorite</md-icon>
+              {{ post.upvotes.length }}
+            </button>
+            <button *ngIf="!canLike" disabled md-ripple="white" md-button (click)="addUpvote()">
+              <md-icon style="color: red">favorite</md-icon>
+              {{ post.upvotes.length }}
             </button>
             <button md-button>
-                <div class="material-icons mdl-badge mdl-badge--overlap" attr.data-badge="{{ post.id }}"><md-icon>comments
-                </md-icon></div>
-                {{ post.comments.length }}
+                <md-icon>comments</md-icon> {{ post.comments.length }}
             </button>
         </md-card-actions>
     </md-card>

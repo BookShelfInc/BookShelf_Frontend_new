@@ -1,0 +1,6 @@
+<h1>{{ pageTitle }}</h1>
+<div *ngIf="books">
+<div *ngFor="let book of books">
+    <p>{{ book.id }}</p>
+</div>
+</div>

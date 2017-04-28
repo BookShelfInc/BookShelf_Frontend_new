@@ -1,0 +1,7 @@
+<h1>{{ pageTitle }}</h1>
+<div *ngIf="quotes">
+    <div *ngFor="let quote of quotes">
+        <p>{{ quote.id }}</p>
+    </div>
+    <button md-button (click)="goToAddQuote()">ADD QUOTE</button>
+</div>

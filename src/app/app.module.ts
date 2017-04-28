@@ -17,6 +17,7 @@ import { AuthorizationService } from './services/authorization.service';
 import { BookService } from './services/book.service';
 import { AuthorService } from './services/author.service';
 import { BlogService } from './services/blog.service';
+import { UserService } from './services/user.service'; 
 
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -25,6 +26,10 @@ import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostCreateComponent } from './components/post-create/post-create.component';
 import { AuthorListComponent } from './components/author-list/author-list.component';
+import { UserComponent } from './components/user/user.component';
+import { WishListComponent } from './components/wish-list/wish-list.component';
+import { QuoteComponent } from './components/quote/quote.component';
+import { AddQuoteComponent } from './components/add-quote/add-quote.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +45,10 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
     PostDetailComponent,
     PostCreateComponent,
     AuthorListComponent,
+    UserComponent,
+    WishListComponent,
+    QuoteComponent,
+    AddQuoteComponent
   ],
   imports: [
     BrowserModule,
@@ -56,12 +65,14 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
       { path: 'blog', component: BlogListComponent },
       { path: 'blog/post/:id', component: PostDetailComponent },
       { path: 'blog/create', component: PostCreateComponent },
+      { path: 'my_page', component: UserComponent },
+      { path: 'my_page/create-quote', component: AddQuoteComponent },
       { path: '', redirectTo: 'books', pathMatch: 'full'},
       { path: '**', redirectTo: 'books', pathMatch: 'full'},     
     ])
   ],
   entryComponents: [AuthComponent, AuthRegisterComponent],
-  providers: [AuthorizationService, BookService, AuthorService, BlogService],
+  providers: [AuthorizationService, BookService, AuthorService, BlogService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

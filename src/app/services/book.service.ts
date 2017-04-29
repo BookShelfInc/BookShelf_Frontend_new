@@ -41,8 +41,8 @@ export class BookService {
         this.http.post(url, JSON.stringify(review), this.jwt()).subscribe();
     }
 
-    isReview(): Observable<any>{
-        let url = 'http://fit.kbtu.kz:8080/book/isreview/';
+    isReview(id: number): Observable<boolean>{
+        let url = 'http://fit.kbtu.kz:8080/book/isreview/' + id.toString() + '/';
         return this.http.get(url, this.jwt()).map((res: Response) => {
             if(res.status == 200){
                 return true;

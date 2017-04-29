@@ -3,7 +3,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
-import { User } from '../models/user';
+import { User, UserCreate } from '../models/user';
 
 @Injectable()
 export class AuthorizationService {
@@ -44,12 +44,14 @@ export class AuthorizationService {
       });
   }
 
-  register(username: string, password: string): Observable<boolean>{
+  register(user: UserCreate): Observable<boolean>{
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
     let url = 'http://fit.kbtu.kz:8080/auth/register/';
-    let body = JSON.stringify({username: username, password: password});
+    let body = JSON.stringify(user);
+
+    console.log(body);
 
     return this.http.post(url, body, options)
       .map((response: Response) => {
@@ -70,7 +72,7 @@ export class AuthorizationService {
     return this.http.get(url, this.jwt()).map((res: Response) => res.json());
   }
 
-  isLoggedIn(): Boolean {
+  isLoggedIn(): boolean {
       let currentUser = JSON.parse(localStorage.getItem('user'));
       if (currentUser && currentUser.token) {
           return true

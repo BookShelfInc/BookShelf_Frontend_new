@@ -3,6 +3,8 @@ import { MdDialogRef } from '@angular/material';
 
 import { AuthorizationService } from '../../services/authorization.service';
 
+import { User, UserCreate } from '../../models/user';
+
 @Component({
   selector: 'app-auth-login',
   templateUrl: './auth.component.html',
@@ -60,7 +62,15 @@ export class AuthRegisterComponent implements OnInit {
   
   register() {
       this.loading = true;
-      this.authenticationService.register(this.model.username, this.model.password)
+      const user: UserCreate = {
+        is_manager: false,
+        username: this.model.username,
+        first_name: this.model.first_name,
+        last_name: this.model.last_name,
+        phone: this.model.phone,
+        password: this.model.password,
+      }
+      this.authenticationService.register(user)
           .subscribe(
               data => {
                 this.login();

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Post, PostCreate } from '../models/post';
 import { CommentCreate, Comment } from '../models/comment';
+import { Upvote, UpvoteCreate } from '../models/upvote';
 
 @Injectable()
 export class BlogService {
@@ -32,6 +33,16 @@ export class BlogService {
     addPost(post: PostCreate) {
         let url = 'http://fit.kbtu.kz:8080/blog/post/create/';
         this.http.post(url, JSON.stringify(post), this.jwt()).subscribe();
+    }
+
+    addUpvote(upvote: UpvoteCreate) {
+        let url = 'http://fit.kbtu.kz:8080/blog/post/upvote/create/';
+        return this.http.post(url, JSON.stringify(upvote), this.jwt()).map((res: Response) => res.json());
+    }
+
+    isLiked(id: number) {
+        let url = 'http://fit.kbtu.kz:8080/blog/post/upvote/isliked/' + id.toString() + '/';
+        return this.http.get(url, this.jwt()).map((res: Response) => res.status);
     }
 
     private jwt() {

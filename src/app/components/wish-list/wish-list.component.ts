@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
 })
 export class WishListComponent implements OnInit{
 
-    pageTitle = 'wish list component works';
+    pageTitle = 'My wishlist';
     books: WishList[];
 
     constructor(private userService: UserService,
@@ -29,6 +29,7 @@ export class WishListComponent implements OnInit{
             }
         );
     }
+
 
     
 }

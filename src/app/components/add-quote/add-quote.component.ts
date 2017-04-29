@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Quote, QuoteCreate } from '../../models/quote';
+import { Book } from '../../models/book';
 
 import { UserService } from '../../services/user.service';
+import { BookService } from '../../services/book.service';
 
 
 @Component({
@@ -13,11 +15,24 @@ import { UserService } from '../../services/user.service';
 export class AddQuoteComponent implements OnInit {
 
     model: any = {}
+    
+    selectBookId: number;
+    books: Book[];
 
     constructor(private userService: UserService,
+                private bookSerive: BookService,
                 private router: Router) { } 
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.bookSerive.getAllBooks().subscribe(
+            data => {
+                this.books = data as Book[];
+            },
+            error => {
+                console.log(error);
+            }
+        )
+     }
 
     addQuote(){
         let currentUser = JSON.parse(localStorage.getItem('user'));

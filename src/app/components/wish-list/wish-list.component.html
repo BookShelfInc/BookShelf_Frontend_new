@@ -1,6 +1,8 @@
-<h1>{{ pageTitle }}</h1>
-<div *ngIf="books">
-<div *ngFor="let book of books">
-    <p>{{ book.id }}</p>
-</div>
-</div>
+<md-card style="width: 90%;">
+    <h1>{{ pageTitle }}</h1>
+    <div *ngIf="books">
+        <div *ngFor="let book of books">
+            <p>{{ book.book.title }}</p>  
+        </div>
+    </div>
+</md-card>

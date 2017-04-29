@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AuthComponent, AuthRegisterComponent } from './components/auth/auth.component';
-import { BookListComponent } from './components/book/book-list.component';
+import { BookListComponent, AddedComponent } from './components/book/book-list.component';
 import { BookDetailComponent } from './components/book/book-detail.component';
 import { ReviewListComponent } from './components/book/review-list.component';
 import { AuthorComponent } from './components/author/author.component';
@@ -27,6 +27,7 @@ import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostCreateComponent } from './components/post-create/post-create.component';
 import { AuthorListComponent } from './components/author-list/author-list.component';
+
 
 import { UserComponent } from './components/user/user.component';
 import { WishListComponent } from './components/wish-list/wish-list.component';
@@ -60,6 +61,7 @@ import { BazaarCreateComponent } from './components/bazaar-create/bazaar-create.
     BazaarDetailComponent,
     BazaarDialog,
     BazaarCreateComponent,
+    AddedComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +86,7 @@ import { BazaarCreateComponent } from './components/bazaar-create/bazaar-create.
       { path: '**', redirectTo: 'books', pathMatch: 'full'},
     ])
   ],
-  entryComponents: [AuthComponent, AuthRegisterComponent, BazaarDialog, BazaarListComponent],
+  entryComponents: [AuthComponent, AuthRegisterComponent, BazaarDialog, BazaarListComponent, AddedComponent],
   providers: [AuthorizationService, BookService, AuthorService, BlogService, BazaarService, UserService],
   bootstrap: [AppComponent]
 })

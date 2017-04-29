@@ -1,7 +1,17 @@
+<md-card style="width: 90%;">
 <h1>{{ pageTitle }}</h1>
-<div *ngIf="quotes">
-    <div *ngFor="let quote of quotes">
-        <p>{{ quote.id }}</p>
+    <div *ngIf="quotes">
+        <div style="margin: 15px">
+            <button md-button style="margin: auto;" (click)="goToAddQuote()">ADD QUOTE</button>
+        </div>
+        <div *ngFor="let quote of quotes">
+            <md-card>
+                <md-card-subtitle>{{ quote.user.first_name }} {{ quote.user.last_name }} | {{ quote.book.title }}</md-card-subtitle>
+                <div style="margin: 20px">
+                    <p>{{ quote.quote}}</p>
+                </div>
+                <button md-button (click)="deleteQuote(quote.id)">Delete comment</button>
+            </md-card>
+        </div>
     </div>
-    <button md-button (click)="goToAddQuote()">ADD QUOTE</button>
-</div>
+</md-card>

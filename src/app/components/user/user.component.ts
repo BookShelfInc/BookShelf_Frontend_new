@@ -6,11 +6,12 @@ import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'user-page',
-    templateUrl: 'user.component.html'
+    templateUrl: 'user.component.html',
+    styleUrls: ['user.component.css']
 })
 export class UserComponent implements OnInit {
 
-    pageTitle = "User app works";
+    pageTitle = "My page";
 
     user: User;
     name: string;

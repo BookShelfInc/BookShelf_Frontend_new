@@ -1,6 +1,10 @@
-<h1>{{ pageTitle }}</h1>
-<h3>{{ user.id }}</h3>
-<h4>{{ user.username }}</h4>
-<h4>{{ name }}</h4>
-<wish-list></wish-list>
-<quote></quote>
+<div class="post-container" fxLayout="column" fxLayoutAlign="space-around">
+    <md-card style="width: 100%;">
+        <h1>{{ pageTitle }}</h1>
+         <md-card-subtitle>{{ user.username }}</md-card-subtitle>
+        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+        <wish-list></wish-list>
+        <br><br>
+        <quote></quote>
+    </md-card>
+</div>

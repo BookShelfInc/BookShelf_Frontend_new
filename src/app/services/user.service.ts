@@ -39,7 +39,7 @@ export class UserService {
     }
 
     addWishList(wishlist: WishListCreate){
-        let url = 'http://fit.kbtu.kz:8080/blog/post/wishlist/create/';
+        let url = 'http://fit.kbtu.kz:8080/profile/wishlist/add/';
         this.http.post(url, JSON.stringify(wishlist), this.jwt()).subscribe();
     }
 
@@ -47,13 +47,13 @@ export class UserService {
 
     //DELETE [QUOTE] and [BOOKS TO WISHLIST]
     deleteQuote(id: number){
-        let url = 'http://fit.kbtu.kz:8080/profile/quotes/add/' + id.toString() + '/';
+        let url = 'http://fit.kbtu.kz:8080/profile/quotes/delete/' + id.toString() + '/';
         this.http.post(url, this.jwt()).subscribe();
 
     }
 
     deleteWishList(id: number){
-        let url = 'http://fit.kbtu.kz:8080/profile/quotes/delete/' + id.toString() + '/';
+        let url = 'http://fit.kbtu.kz:8080/profile/wishlist/delete/' + id.toString() + '/';
         this.http.post(url, this.jwt()).subscribe();
     }
 

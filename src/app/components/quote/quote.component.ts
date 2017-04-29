@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
 }) 
 export class QuoteComponent implements OnInit {
 
-    pageTitle = "quote component works";
+    pageTitle = "Quote";
 
     quotes: Quote[];
 
@@ -27,6 +27,11 @@ export class QuoteComponent implements OnInit {
                 console.error(error);
             }
         )
+    }
+
+    deleteQuote(id: number) {
+        console.log(id.toString());
+        this.userService.deleteQuote(id);
     }
 
     goToAddQuote(){

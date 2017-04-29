@@ -4,7 +4,15 @@
       <md-input-container style="width: 100%;">
         <input type="text" mdInput [(ngModel)]="model.quote" placeholder="Write your fucking quote">
       </md-input-container>
-      <div class="post-container">
+      <div *ngIf="books" style="margin-bottom: 10px" style="margin-top: 20px">
+        <form>
+            <md-select placeholder="Choose Book" [(ngModel)]="selectedBookId" name="book" required>
+                <md-option *ngFor="let book of books" [value]="book.id">
+                    {{ book.title }}
+                </md-option>
+            </md-select>
+        </form>
+      <div class="post-container" style="margin-top: 20px">
           <button md-button md-raised-button color="warn" (click)="addQuote()">Add Quote</button>
       </div>
   </div>

@@ -9,6 +9,7 @@ import { WishListCreate } from '../../models/wish-list';
 
 import { BookService } from '../../services/book.service';
 import { UserService } from '../../services/user.service';
+import { AuthorizationService } from '../../services/authorization.service';
 
 
 @Component({
@@ -19,11 +20,13 @@ import { UserService } from '../../services/user.service';
 export class BookListComponent implements OnInit {
 
     books: Book[];
+    loggedInBool: boolean;
 
     constructor(private bookService: BookService,
                 private userService: UserService,
                 private router: Router,
-                public snackBar: MdSnackBar) {}
+                public snackBar: MdSnackBar,
+                public authService: AuthorizationService,) {}
 
     ngOnInit() {
         this.bookService.getAllBooks().subscribe(
@@ -36,6 +39,7 @@ export class BookListComponent implements OnInit {
                 console.log(error);
             }
         );        
+        this.loggedIn();
     }
 
     goToDetail(book: Book){
@@ -59,6 +63,10 @@ export class BookListComponent implements OnInit {
                     duration: 500,
             });
         }
+    }
+    
+    loggedIn() {
+        this.loggedInBool = this.authService.isLoggedIn();
     }
 }
 

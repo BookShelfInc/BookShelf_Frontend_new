@@ -22,7 +22,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
   closeDialog() {
     this.dialogRef.close();  
   }

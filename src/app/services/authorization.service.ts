@@ -35,7 +35,6 @@ export class AuthorizationService {
               localStorage.setItem('user', JSON.stringify({ token: token, username: username, user: userInfo}));
             }
           );
-
           return true;
         }
         else{

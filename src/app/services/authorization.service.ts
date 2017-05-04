@@ -33,6 +33,7 @@ export class AuthorizationService {
               let userInfo = data as User;
               localStorage.removeItem('user');
               localStorage.setItem('user', JSON.stringify({ token: token, username: username, user: userInfo}));
+              location.reload();
             }
           );
           return true;

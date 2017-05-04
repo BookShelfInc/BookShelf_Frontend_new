@@ -8,9 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AuthComponent, AuthRegisterComponent } from './components/auth/auth.component';
-import { BookListComponent, AddedComponent } from './components/book/book-list.component';
-import { BookDetailComponent } from './components/book/book-detail.component';
-import { ReviewListComponent } from './components/book/review-list.component';
+import { BookListComponent, AddedComponent } from './components/book-list/book-list.component';
+import { BookDetailComponent } from './components/book-detail/book-detail.component';
+import { ReviewListComponent } from './components/review-list/review-list.component';
 import { AuthorComponent } from './components/author/author.component';
 
 import { AuthorizationService } from './services/authorization.service';

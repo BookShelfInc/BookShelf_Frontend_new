@@ -30,7 +30,7 @@ export class AuthComponent implements OnInit {
   login(){
     this.authorizationService.login(this.model.username, this.model.password).subscribe(
       data => {
-        this.closeDialog();
+        //this.closeDialog();
         this.error = false;
       },
       error => {
@@ -74,7 +74,7 @@ export class AuthRegisterComponent implements OnInit {
           .subscribe(
               data => {
                 this.login();
-                this.closeDialog();
+                //this.closeDialog();
                 this.error = false;
               },
               error => {

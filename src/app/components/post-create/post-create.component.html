@@ -4,11 +4,17 @@
       <md-input-container style="width: 100%;">
         <input type="text" mdInput [(ngModel)]="model.title" placeholder="Title">
       </md-input-container>
-      <md-input-container style="width: 100%;">
-        <textarea [(ngModel)]="model.content" mdInput mdTextareaAutosize placeholder="Content"></textarea>
-      </md-input-container>
+      
+      <!--<md-input-container style="width: 100%;">-->
+        <!--<textarea  [(ngModel)]="model.content" mdInput mdTextareaAutosize placeholder="Content" froala></textarea>-->
+        <p>Content</p>
+       <div [froalaEditor] [(froalaModel)]="editorContent"></div>
+      <!--</md-input-container>-->
       <div class="post-container">
           <button md-button md-raised-button color="warn" (click)="addPost()">Post</button>
       </div>
   </div>
 </div>
+
+
+

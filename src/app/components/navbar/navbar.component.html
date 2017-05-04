@@ -24,7 +24,7 @@
       </button>
     </div>
     <div class="button-row">
-      <button *ngIf="!loggedIn()" md-button (click)="openSignupDialog()">Register</button>
+      <button *ngIf="!username" md-button (click)="openSignupDialog()">Register</button>
       <button *ngIf="!username" md-button (click)="openLoginDialog()"> Log in</button>
       <button *ngIf="username" md-button (click)="logout()">Log out</button>
     </div>

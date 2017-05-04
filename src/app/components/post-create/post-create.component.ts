@@ -12,6 +12,7 @@ import { Post, PostCreate } from '../../models/post';
 })
 export class PostCreateComponent implements OnInit {
 
+  public editorContent: string = 'My Document\'s Title';
   model: any = {}
 
   constructor(private blogService: BlogService,
@@ -26,7 +27,7 @@ export class PostCreateComponent implements OnInit {
           console.log('here');
           const post: PostCreate = {
               title: this.model.title,
-              content: this.model.content,
+              content: this.editorContent,
               publish_date: new Date().toDateString(),
               author: currentUser.user.id,
           };

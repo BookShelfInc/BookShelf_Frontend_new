@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BlogService } from '../../services/blog.service';
 
 import { Post, PostIsLiked } from '../../models/post';
+import { Upvote, UpvoteCreate } from '../../models/upvote';
 
 @Component({
   selector: 'app-blog-list',
@@ -80,10 +81,39 @@ export class BlogListComponent implements OnInit {
       );
     }
   }
+  
+  addUpvote(post: PostIsLiked) {
+      let currentUser = JSON.parse(localStorage.getItem('user'));
+        if (currentUser && currentUser.token) {
+            console.log('here');
+            const upvote: UpvoteCreate = {
+                author: currentUser.user.id,
+                post: post.id,
+                like: true
+            };
+            const upvotePush: Upvote = {
+                id: 1,
+                author: currentUser.user.id,
+                post: post.id,
+                like: true
+            };
+            console.log(upvote);
+            this.blogService.addUpvote(upvote).subscribe(
+                data => {
+                    console.log(data);
+                    post.upvotes = post.upvotes + 1;
+                    post.is_liked = true;
+                },
+                error => {
+                    console.log(error);
+                }
+            );
+        }
+  }
 
-  goToDetail(post: Post) {
-    this.router.navigate(['/blog/post/', post.id]);
-    console.log(post.id);
+  goToDetail(post: Post){
+        this.router.navigate(['/blog/post/', post.id]);
+        console.log(post.id);
   }
 
   goToCreatePost() {

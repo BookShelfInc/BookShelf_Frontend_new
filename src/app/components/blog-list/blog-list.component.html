@@ -9,9 +9,12 @@
         <!--<md-card-content> {{ post.content }} </md-card-content>-->
         <div [froalaView]="post.content"></div>
         <md-card-actions>
-            <button md-ripple="white" md-button>
-              <md-icon *ngIf="!post.is_liked">favorite</md-icon>
-              <md-icon *ngIf="post.is_liked" style="color: red">favorite</md-icon>
+            <button md-ripple="white" md-button *ngIf="!post.is_liked" (click)="addUpvote(post)">
+              <md-icon>favorite</md-icon>
+              {{ post.upvotes }}
+            </button>
+            <button md-ripple="white" md-button *ngIf="post.is_liked">
+              <md-icon style="color: red">favorite</md-icon>
               {{ post.upvotes }}
             </button>
             <button md-button>

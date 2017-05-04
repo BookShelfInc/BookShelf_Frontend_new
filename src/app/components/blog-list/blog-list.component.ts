@@ -17,77 +17,77 @@ export class BlogListComponent implements OnInit {
   can = false;
 
   constructor(private blogService: BlogService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit() {
     let currentUser = JSON.parse(localStorage.getItem('user'));
     if (currentUser && currentUser.token) {
       this.can = true;
-      
+
       this.blogService.getAllPosts().subscribe(
-      data => {
-        this.posts = data as Post[];
-        for(var i=0; i<this.posts.length; i++){
-          var exist = false;
-          for(var j=0; j<this.posts[i].upvotes.length; j++){
-            if(this.posts[i].upvotes[j].author == currentUser.user.id){
-              exist = true;
-              break;
+        data => {
+          this.posts = data as Post[];
+          for (var i = 0; i < this.posts.length; i++) {
+            var exist = false;
+            for (var j = 0; j < this.posts[i].upvotes.length; j++) {
+              if (this.posts[i].upvotes[j].author == currentUser.user.id) {
+                exist = true;
+                break;
+              }
             }
+            const postIL: PostIsLiked = {
+              id: this.posts[i].id,
+              title: this.posts[i].title,
+              content: this.posts[i].content,
+              publish_date: this.posts[i].publish_date,
+              author: this.posts[i].author,
+              comments: this.posts[i].comments.length,
+              upvotes: this.posts[i].upvotes.length,
+              is_liked: exist,
+            }
+            this.postsIsLiked.push(postIL);
           }
-          const postIL: PostIsLiked = {
-            id: this.posts[i].id,
-            title: this.posts[i].title,
-            content: this.posts[i].content,
-            publish_date: this.posts[i].publish_date,
-            author: this.posts[i].author,
-            comments: this.posts[i].comments.length,
-            upvotes: this.posts[i].upvotes.length,
-            is_liked: exist,
-          }
-          this.postsIsLiked.push(postIL);
+          console.log(data);
+        },
+        error => {
+          console.log(error);
         }
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-    else{
+      );
+    }
+    else {
       this.blogService.getAllPosts().subscribe(
-      data => {
-        this.posts = data as Post[];
-        for(var i=0; i<this.posts.length; i++){
-          var exist = false;
-          const postIL: PostIsLiked = {
-            id: this.posts[i].id,
-            title: this.posts[i].title,
-            content: this.posts[i].content,
-            publish_date: this.posts[i].publish_date,
-            author: this.posts[i].author,
-            comments: this.posts[i].comments.length,
-            upvotes: this.posts[i].upvotes.length,
-            is_liked: exist,
+        data => {
+          this.posts = data as Post[];
+          for (var i = 0; i < this.posts.length; i++) {
+            var exist = false;
+            const postIL: PostIsLiked = {
+              id: this.posts[i].id,
+              title: this.posts[i].title,
+              content: this.posts[i].content,
+              publish_date: this.posts[i].publish_date,
+              author: this.posts[i].author,
+              comments: this.posts[i].comments.length,
+              upvotes: this.posts[i].upvotes.length,
+              is_liked: exist,
+            }
+            this.postsIsLiked.push(postIL);
           }
-          this.postsIsLiked.push(postIL);
+          console.log(data);
+        },
+        error => {
+          console.log(error);
         }
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+      );
     }
   }
 
-  goToDetail(post: Post){
-        this.router.navigate(['/blog/post/', post.id]);
-        console.log(post.id);
+  goToDetail(post: Post) {
+    this.router.navigate(['/blog/post/', post.id]);
+    console.log(post.id);
   }
 
-  goToCreatePost(){
-        this.router.navigate(['/blog/create']);
+  goToCreatePost() {
+    this.router.navigate(['/blog/create']);
   }
 
 }

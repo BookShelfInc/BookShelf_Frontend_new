@@ -2,6 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
     "name": "book-shelf"
+    
   },
   "apps": [
     {
@@ -19,9 +20,14 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/froala-editor/css/froala_editor.pkgd.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+          "../node_modules/jquery/dist/jquery.min.js",
+          "../node_modules/froala-editor/js/froala_editor.pkgd.min.js"  
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -29,6 +35,7 @@
       }
     }
   ],
+  
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"

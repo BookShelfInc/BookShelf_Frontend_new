@@ -39,6 +39,9 @@ import { BazaarDialog } from './components/bazaar-list/bazaar-list.component';
 import { BazaarDetailComponent } from './components/bazaar-detail/bazaar-detail.component';
 import { BazaarCreateComponent } from './components/bazaar-create/bazaar-create.component';
 
+import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +67,7 @@ import { BazaarCreateComponent } from './components/bazaar-create/bazaar-create.
     AddedComponent
   ],
   imports: [
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,

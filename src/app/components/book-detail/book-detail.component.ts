@@ -18,6 +18,7 @@ export class BookDetailComponent implements OnInit{
     error = false;
     model: any = {}
     can = false;
+    editorContent: string = "";
 
     loggedInBool: boolean;
     isrev: boolean;
@@ -50,7 +51,7 @@ export class BookDetailComponent implements OnInit{
             const review: Review = {
                 user: currentUser.user.id,
                 book: this.book.id,
-                review: this.model.review
+                review: this.editorContent
             };
             console.log('curUSer' +  currentUser.user)
             console.log('Review --- ' + review);

@@ -11,7 +11,7 @@ export class AuthorService {
    constructor(private http: Http) { }
 
     getAuthor(id: number): Observable<AuthorInfo>{
-        let url = 'http://fit.kbtu.kz:8080/book/author/' + id.toString() + '/';
+        let url = 'http://bookshelf.life:8080/book/author/' + id.toString() + '/';
         console.log(url);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
@@ -19,7 +19,7 @@ export class AuthorService {
     } 
 
     getAllAuthors(): Observable<Author[]> {
-        let url = 'http://fit.kbtu.kz:8080/book/author/all/';
+        let url = 'http://bookshelf.life:8080/book/author/all/';
         console.log(url);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });

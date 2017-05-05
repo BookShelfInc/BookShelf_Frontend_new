@@ -19,21 +19,21 @@ export class BazaarService {
   constructor(private http: Http) { }
 
   getAllAds(): Observable<Bazaar[]> {
-    let url = 'http://fit.kbtu.kz:8080/bazaar/all/';
+    let url = 'http://bookshelf.life:8080/bazaar/all/';
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this.http.get(url, options).map((res: Response) => res.json());
   }
 
   getAd(id: number): Observable<Bazaar> {
-    let url = 'http://fit.kbtu.kz:8080/bazaar/' + id.toString() + '/';
+    let url = 'http://bookshelf.life:8080/bazaar/' + id.toString() + '/';
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this.http.get(url, options).map((res: Response) => res.json());
   }
 
   createAd(ad: BazaarCreate) {
-    let url = 'http://fit.kbtu.kz:8080/bazaar/create/';
+    let url = 'http://bookshelf.life:8080/bazaar/create/';
     return this.http.post(url, JSON.stringify(ad), this.jwt()).map((res: Response) => res.json());
   }
   

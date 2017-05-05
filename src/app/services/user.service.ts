@@ -15,14 +15,14 @@ export class UserService {
     //GET ALL WISH_LISTS AND QUOTES
 
     getQuote(): Observable<Quote[]> {
-        let url = 'http://fit.kbtu.kz:8080/profile/quotes/all/'; //GET
+        let url = 'http://bookshelf.life:8080/profile/quotes/all/'; //GET
         let headers = new Headers({ 'Content-Type': 'application/json' });
         //let options = new RequestOptions({ headers: headers });
         return this.http.get(url, this.jwt()).map((res: Response) => res.json());
     }
 
     getWishList(): Observable<WishList[]> {
-        let url = 'http://fit.kbtu.kz:8080/profile/wishlist/all/'; //GET
+        let url = 'http://bookshelf.life:8080/profile/wishlist/all/'; //GET
         let headers = new Headers({ 'Content-Type': 'application/json' });
         //let options = new RequestOptions({ headers: headers });
         return this.http.get(url, this.jwt()).map((res: Response) => res.json());
@@ -34,12 +34,12 @@ export class UserService {
     //ADD [QUOTE] AND [BOOKS TO WISHLIST]
 
     addQuote(quote: QuoteCreate) {
-        let url = 'http://fit.kbtu.kz:8080/profile/quotes/add/';
+        let url = 'http://bookshelf.life:8080/profile/quotes/add/';
         this.http.post(url, JSON.stringify(quote), this.jwt()).subscribe();
     }
 
     addWishList(wishlist: WishListCreate) {
-        let url = 'http://fit.kbtu.kz:8080/profile/wishlist/add/';
+        let url = 'http://bookshelf.life:8080/profile/wishlist/add/';
         this.http.post(url, JSON.stringify(wishlist), this.jwt()).subscribe();
     }
 
@@ -47,13 +47,13 @@ export class UserService {
 
     //DELETE [QUOTE] and [BOOKS TO WISHLIST]
     deleteQuote(id: number) {
-        let url = 'http://fit.kbtu.kz:8080/profile/quotes/delete/' + id.toString() + '/';
+        let url = 'http://bookshelf.life:8080/profile/quotes/delete/' + id.toString() + '/';
         return this.http.post(url, this.jwt()).map((res: Response) => res);
     }
 
 
     deleteWishList(id: number) {
-        let url = 'http://fit.kbtu.kz:8080/profile/wishlist/delete/' + id.toString() + '/';
+        let url = 'http://bookshelf.life:8080/profile/wishlist/delete/' + id.toString() + '/';
         return this.http.post(url, this.jwt()).map((res: Response) => res);
     }
 

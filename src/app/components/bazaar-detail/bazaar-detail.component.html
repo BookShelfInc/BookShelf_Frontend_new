@@ -4,7 +4,7 @@
         <md-card-subtitle>
             Added by {{ ad.user.first_name }} {{ ad.user.last_name }}
         </md-card-subtitle>
-        <img src="http://fit.kbtu.kz:8080{{ ad.book.cover }}" style="width:120px; height:200px;">
+        <img src="http://fit.kbtu.kz:8080{{ ad.book.cover }}" style="width:120px; height:200px;" alt="book image">
         <md-card-content> {{ ad.price }} </md-card-content>
         <md-card-actions>
             <button (click)="goToDetail(ad)" md-ripple="white" md-button>

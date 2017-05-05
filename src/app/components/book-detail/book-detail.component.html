@@ -16,14 +16,15 @@
         <h2>Your Review:</h2>
         <div class="form">
             <md-input-container style="width: 100%;">
-                    <input mdInput [(ngModel)]="model.review" placeholder="Comment">
-                </md-input-container>
-            <div>
-                <button md-fab (click)="addReview()">Send</button>
+                <input mdInput [(ngModel)]="model.review" placeholder="Comment">
+            </md-input-container>
+            <!--<div [froalaEditor] [(froalaModel)]="editorContent"></div>-->
+            <div class="sendb">
+                <button md-button color="warn" (click)="addReview()">Send</button>
             </div>
         </div>
     </div>
-    
+
     <div style="margin-top: 20px">
         <h2>Reviews:</h2>
         <review-list [currentBook]="book"></review-list>
@@ -31,5 +32,5 @@
 </div>
 
 <div *ngIf="error">
-    <h2>Ohh... What a book :)</h2>   
+    <h2>Ohh... What a book :)</h2>
 </div>

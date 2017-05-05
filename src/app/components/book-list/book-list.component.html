@@ -5,7 +5,8 @@
 </div>
 
 <div *ngIf="books" class="post-container">
-    <div *ngFor="let book of books" fxLayoutAlign="space-around" fxFlex="24" fxFlexOffset="7" style="margin-bottom:5px;">
+    <div *ngFor="let book of books" (@flyInOut.done)="doNext()"
+        [@flyInOut]="'in'"  fxLayoutAlign="space-around" fxFlex="24" fxFlexOffset="7" style="margin-bottom:5px;">
       <md-card style="width: 100%">
         <md-card-header>
             <md-card-title><h2>{{ book.title }}</h2></md-card-title>

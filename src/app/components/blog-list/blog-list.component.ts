@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, trigger, transition, style, animate } from '@angular/core'
 import { Router } from '@angular/router';
 
 import { BlogService } from '../../services/blog.service';
@@ -9,7 +9,15 @@ import { Upvote, UpvoteCreate } from '../../models/upvote';
 @Component({
   selector: 'app-blog-list',
   templateUrl: './blog-list.component.html',
-  styleUrls: ['./blog-list.component.css']
+  styleUrls: ['./blog-list.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: '0' }),
+        animate('.5s ease-out', style({ opacity: '1' })),
+      ]),
+    ]),
+  ],
 })
 export class BlogListComponent implements OnInit {
 
@@ -46,7 +54,7 @@ export class BlogListComponent implements OnInit {
               upvotes: this.posts[i].upvotes.length,
               is_liked: exist,
             }
-            this.postsIsLiked.push(postIL);
+            this.postsIsLiked.unshift(postIL);
           }
           console.log(data);
         },
@@ -71,7 +79,7 @@ export class BlogListComponent implements OnInit {
               upvotes: this.posts[i].upvotes.length,
               is_liked: exist,
             }
-            this.postsIsLiked.push(postIL);
+            this.postsIsLiked.unshift(postIL);
           }
           console.log(data);
         },
@@ -80,6 +88,9 @@ export class BlogListComponent implements OnInit {
         }
       );
     }
+
+   
+
   }
   
   addUpvote(post: PostIsLiked) {

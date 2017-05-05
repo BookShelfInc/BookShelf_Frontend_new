@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { WishList } from '../../models/wish-list';
+import { Book } from '../../models/book';
 
 import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'wish-list',
-    templateUrl: 'wish-list.component.html'
+    templateUrl: 'wish-list.component.html',
+    styleUrls: ['wish-list.component.css']
 })
 export class WishListComponent implements OnInit{
 
@@ -28,6 +30,11 @@ export class WishListComponent implements OnInit{
                 console.log(error);
             }
         );
+    }
+
+    goToDetail(book: Book){
+        this.router.navigate(['/book', book.id]);
+        console.log(book.id);
     }
 
 

@@ -1,6 +1,6 @@
 <div>
     <div fxLayoutAlign="space-around" fxFlex="80" fxFlexOffset="10">
-        <img src="../../../assets/author.png">
+        <img src="../../../assets/author.png" alt="Author page">
     </div>
 </div>
 
@@ -9,7 +9,7 @@
     <md-card style="width: 100%;">
         <md-card-title>{{ author.first_name }} {{ author.last_name }}</md-card-title>
         <div class="image">
-          <img src="http://fit.kbtu.kz:8080{{ author.avatar }}" style="width:250px; height:300px">
+          <img src="http://fit.kbtu.kz:8080{{ author.avatar }}" style="width:250px; height:300px" alt="author image}">
         </div>
         <md-card-actions>
             <button (click)="goToDetail(author)" md-ripple="warn" color="primary" md-button>

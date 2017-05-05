@@ -1,8 +1,21 @@
-<md-card style="width: 90%;">
+<md-card style="width: 100%;">
     <h1>{{ pageTitle }}</h1>
-    <div *ngIf="books">
-        <div *ngFor="let book of books">
-            <p>{{ book.book.title }}</p>  
+    <div *ngIf="books" class="post-container">
+        <div *ngFor="let book of books" fxLayoutAlign="space-around" fxFlex="24" fxFlexOffset="7" style="margin-bottom:5px;">
+            <md-card style="width: 100%">
+            <md-card-header>
+                <md-card-title><h2>{{ book.book.title }}</h2></md-card-title>
+            </md-card-header>
+            <div class="image">
+                <img src="http://fit.kbtu.kz:8080{{ book.book.cover }}" style="width:120px; height:200px;">
+            </div>
+            
+            <md-card-content>
+                <h3>Author - {{ book.book.author.first_name }} {{ book.book.author.last_name }}</h3>
+                <h4>Genre - {{ book.book.genre }}</h4>
+            </md-card-content>
+                <button md-button color="warn" (click)="goToDetail(book.book)">Book Detail</button>
+            </md-card>
         </div>
     </div>
 </md-card>

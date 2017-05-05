@@ -16,3 +16,25 @@ review-list {
     margin-left: 30px;
     margin-right: 30px;
 }
+
+.roundrect {
+border-radius: 100px;
+}
+
+.commondiv {
+    flex: 1 0 auto;
+    justify-content: space-between;
+    display: inline;
+}
+
+.div-image {
+    float: left;
+}
+
+.div-content {
+    margin-left: 270px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+    height: 170px;
+}

@@ -40,6 +40,7 @@ import { BazaarDetailComponent } from './components/bazaar-detail/bazaar-detail.
 import { BazaarCreateComponent } from './components/bazaar-create/bazaar-create.component';
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
+import { Custom404Component } from './components/custom-404/custom-404.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
     BazaarDetailComponent,
     BazaarDialog,
     BazaarCreateComponent,
-    AddedComponent
+    AddedComponent,
+    Custom404Component
   ],
   imports: [
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
@@ -87,7 +89,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
       { path: 'bazaar', component: BazaarListComponent },
       { path: 'bazaar/create', component: BazaarCreateComponent },
       { path: '', redirectTo: 'books', pathMatch: 'full'},
-      { path: '**', redirectTo: 'books', pathMatch: 'full'},
+      { path: '404', component: Custom404Component},
+      { path: '**', redirectTo: '404', pathMatch: 'full'},
     ])
   ],
   entryComponents: [AuthComponent, AuthRegisterComponent, BazaarDialog, BazaarListComponent, BookListComponent, AddedComponent],

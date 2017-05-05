@@ -8,7 +8,7 @@ import { UserService } from '../../services/user.service';
 @Component({
     selector: 'quote',
     templateUrl: 'quote.component.html'
-}) 
+})
 export class QuoteComponent implements OnInit {
 
     pageTitle = "Quote";
@@ -16,9 +16,15 @@ export class QuoteComponent implements OnInit {
     quotes: Quote[];
 
     constructor(private router: Router,
-                private userService: UserService) {} 
+        private userService: UserService) {
+        this.getQuote();
+    }
 
     ngOnInit() {
+        this.getQuote();
+    }
+
+    getQuote() {
         this.userService.getQuote().subscribe(
             data => {
                 this.quotes = data as Quote[];
@@ -30,11 +36,14 @@ export class QuoteComponent implements OnInit {
     }
 
     deleteQuote(id: number) {
-        console.log(id.toString());
-        this.userService.deleteQuote(id);
+        this.userService.deleteQuote(id).subscribe(
+            data => {
+                this.getQuote();
+            }
+        );
     }
 
-    goToAddQuote(){
+    goToAddQuote() {
         this.router.navigate(['/my_page/create-quote']);
     }
 }

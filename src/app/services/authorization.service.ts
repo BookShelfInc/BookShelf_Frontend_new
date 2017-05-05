@@ -16,7 +16,7 @@ export class AuthorizationService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    let url = 'http://fit.kbtu.kz:8080/auth/login/';
+    let url = 'http://bookshelf.life:8080/auth/login/';
     let body = JSON.stringify({username: username, password: password});
     
     return this.http.post(url, body, options)
@@ -48,7 +48,7 @@ export class AuthorizationService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    let url = 'http://fit.kbtu.kz:8080/auth/register/';
+    let url = 'http://bookshelf.life:8080/auth/register/';
     let body = JSON.stringify(user);
 
     console.log(body);
@@ -65,7 +65,7 @@ export class AuthorizationService {
   }
 
   getInfo(): Observable<any> {
-    let url = 'http://fit.kbtu.kz:8080/auth/info/';
+    let url = 'http://bookshelf.life:8080/auth/info/';
         
     console.log(this.jwt());
 

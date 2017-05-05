@@ -11,14 +11,14 @@ export class BookService {
     constructor(private http: Http) { }
 
     getAllBooks(): Observable<Book[]> {
-        let url = 'http://fit.kbtu.kz:8080/book/all/';
+        let url = 'http://bookshelf.life:8080/book/all/';
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         return this.http.get(url, options).map((res: Response) => res.json());
     }
 
     getBook(id: number) {
-        let url = 'http://fit.kbtu.kz:8080/book/' + id.toString() + '/';
+        let url = 'http://bookshelf.life:8080/book/' + id.toString() + '/';
         console.log(url);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
@@ -26,7 +26,7 @@ export class BookService {
     }
 
     getReview(book: Book): Observable<Review[]> {
-        let url = 'http://fit.kbtu.kz:8080/book/review/' + book.id.toString() + '/';
+        let url = 'http://bookshelf.life:8080/book/review/' + book.id.toString() + '/';
         console.log(url);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
@@ -34,7 +34,7 @@ export class BookService {
     }
 
     addReview(review: Review) {
-        let url = 'http://fit.kbtu.kz:8080/book/review/';
+        let url = 'http://bookshelf.life:8080/book/review/';
 
         console.log(JSON.stringify(review));
 
@@ -42,7 +42,7 @@ export class BookService {
     }
 
     isReview(id: number): Observable<boolean>{
-        let url = 'http://fit.kbtu.kz:8080/book/isreview/' + id.toString() + '/';
+        let url = 'http://bookshelf.life:8080/book/isreview/' + id.toString() + '/';
         return this.http.get(url, this.jwt()).map((res: Response) => {
             if(res.status == 200){
                 return true;

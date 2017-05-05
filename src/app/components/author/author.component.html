@@ -2,7 +2,7 @@
     <md-card style="width: 100%; display: inline-block">
         <md-card-title> {{ author.first_name }} {{ author.last_name }} </md-card-title>
         
-        <img src="http://fit.kbtu.kz:8080{{ author.avatar }}" style="width: 400px; height: 500px;" alt="author image">
+        <img src="http://bookshelf.life:8080{{ author.avatar }}" style="width: 400px; height: 500px;" alt="author image">
         <md-card-content style="width: 700px; float: right; font-family: italic;"> <strong>Description:</strong> <br> {{ author.biography }} </md-card-content>
         
     </md-card>
@@ -12,7 +12,7 @@
         <div *ngFor="let book of author.book_set">
             <md-card style="width: 100%;">
                 <md-card-title> {{ book.title }} </md-card-title>
-                <img src="http://fit.kbtu.kz:8080{{ book.cover }}" style="width:250px; height:300px">
+                <img src="http://bookshelf.life:8080{{ book.cover }}" style="width:250px; height:300px">
                 <br>
                 <button md-button color="warn" (click)="goToDetail(book)">Book Detail</button>
             </md-card>

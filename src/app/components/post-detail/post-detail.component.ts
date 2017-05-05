@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router }   from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
 
 import { BlogService } from '../../services/blog.service';
 
@@ -8,43 +9,52 @@ import { Comment, CommentCreate } from '../../models/comment';
 import { Upvote, UpvoteCreate } from '../../models/upvote';
 
 @Component({
-  selector: 'app-post-detail',
-  templateUrl: './post-detail.component.html',
-  styleUrls: ['./post-detail.component.css']
+    selector: 'app-post-detail',
+    templateUrl: './post-detail.component.html',
+    styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
 
-  public post: Post;
-  can = false;
-  model: any = {}
-  written = false;
-  liked = false;
-  canLike = true;
+    public post: Post;
+    can = false;
+    model: any = {}
+    written = false;
+    liked = false;
+    canLike = true;
 
-  constructor(private _route: ActivatedRoute,
-              private blogService: BlogService,
-              private _router: Router) { }
+    constructor(private _route: ActivatedRoute,
+        private blogService: BlogService,
+        private _router: Router) { }
 
-  ngOnInit() {
-    let currentUser = JSON.parse(localStorage.getItem('user'));
-    if (currentUser && currentUser.token) {
-      this.can = true;
+    ngOnInit() {
+        let currentUser = JSON.parse(localStorage.getItem('user'));
+        if (currentUser && currentUser.token) {
+            this.can = true;
+        }
+        this._route.params.subscribe(params => {
+            if (params['id'] as number) {
+                this.getComments(params['id']);
+            }
+        });
     }
-    this._route.params
-            .switchMap((params: Params) => this.blogService.getPost(+params['id'])).subscribe(
-                    data => {
-                        this.post = data as Post;
-                        //
-                        this.checkIsLiked();
-                    },
-                    error => {
-                        console.log(error);
-                    }
-            );
-  }
 
-  addUpvote() {
-      let currentUser = JSON.parse(localStorage.getItem('user'));
+    getComments(id: number) {
+        let timer = Observable.timer(2000, 1000);
+        timer.subscribe(t => {
+            this.blogService.getPost(id).subscribe(
+                data => {
+                    this.post = data as Post;
+                    this.checkIsLiked(id);
+                },
+                error => {
+                    console.log(error);
+                }
+            );
+        })
+    }
+
+    addUpvote() {
+        let currentUser = JSON.parse(localStorage.getItem('user'));
         if (currentUser && currentUser.token) {
             console.log('here');
             const upvote: UpvoteCreate = {
@@ -70,9 +80,9 @@ export class PostDetailComponent implements OnInit {
                 }
             );
         }
-  }
+    }
 
-  addComment(){
+    addComment() {
         let currentUser = JSON.parse(localStorage.getItem('user'));
         if (currentUser && currentUser.token) {
             console.log('here');
@@ -96,11 +106,11 @@ export class PostDetailComponent implements OnInit {
             this.model.comment = '';
         }
         console.log(this.model.review);
-        
+
     }
 
-    checkIsLiked() {
-        this.blogService.isLiked(this.post.id).subscribe(
+    checkIsLiked(id: number) {
+        this.blogService.isLiked(id).subscribe(
             data => {
                 this.canLike = false;
                 console.log('checked ' + data);

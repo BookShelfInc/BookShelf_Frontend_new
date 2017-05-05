@@ -9,7 +9,7 @@ import { Quote, QuoteCreate } from '../models/quote';
 @Injectable()
 export class UserService {
 
-    constructor(private http: Http) {}
+    constructor(private http: Http) { }
 
 
     //GET ALL WISH_LISTS AND QUOTES
@@ -21,7 +21,7 @@ export class UserService {
         return this.http.get(url, this.jwt()).map((res: Response) => res.json());
     }
 
-    getWishList(): Observable<WishList[]>{
+    getWishList(): Observable<WishList[]> {
         let url = 'http://fit.kbtu.kz:8080/profile/wishlist/all/'; //GET
         let headers = new Headers({ 'Content-Type': 'application/json' });
         //let options = new RequestOptions({ headers: headers });
@@ -33,12 +33,12 @@ export class UserService {
 
     //ADD [QUOTE] AND [BOOKS TO WISHLIST]
 
-    addQuote(quote: QuoteCreate){
+    addQuote(quote: QuoteCreate) {
         let url = 'http://fit.kbtu.kz:8080/profile/quotes/add/';
         this.http.post(url, JSON.stringify(quote), this.jwt()).subscribe();
     }
 
-    addWishList(wishlist: WishListCreate){
+    addWishList(wishlist: WishListCreate) {
         let url = 'http://fit.kbtu.kz:8080/profile/wishlist/add/';
         this.http.post(url, JSON.stringify(wishlist), this.jwt()).subscribe();
     }
@@ -46,25 +46,28 @@ export class UserService {
 
 
     //DELETE [QUOTE] and [BOOKS TO WISHLIST]
-    deleteQuote(id: number){
+    deleteQuote(id: number) {
         let url = 'http://fit.kbtu.kz:8080/profile/quotes/delete/' + id.toString() + '/';
-        this.http.post(url, this.jwt()).subscribe();
-
+        return this.http.post(url, this.jwt()).map((res: Response) => res);
     }
 
-    deleteWishList(id: number){
+
+    deleteWishList(id: number) {
         let url = 'http://fit.kbtu.kz:8080/profile/wishlist/delete/' + id.toString() + '/';
-        this.http.post(url, this.jwt()).subscribe();
+        return this.http.post(url, this.jwt()).map((res: Response) => res);
     }
 
 
     private jwt() {
-    // create authorization header with jwt token
+        // create authorization header with jwt token
         let currentUser = JSON.parse(localStorage.getItem('user'));
         if (currentUser && currentUser.token) {
-            console.log(currentUser);
-            let headers = new Headers({ 'Content-Type': 'application/json',
-                                        'Authorization': 'JWT ' + currentUser.token });
+            console.log(currentUser.token);
+            let headers = new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': 'JWT ' + currentUser.token
+            });
+            console.log(headers);
             return new RequestOptions({ headers: headers });
         }
     }

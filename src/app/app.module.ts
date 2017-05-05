@@ -41,6 +41,7 @@ import { BazaarCreateComponent } from './components/bazaar-create/bazaar-create.
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import { Custom404Component } from './components/custom-404/custom-404.component';
+import { UserPostsComponent } from './components/user-posts/user-posts.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { Custom404Component } from './components/custom-404/custom-404.component
     BazaarDialog,
     BazaarCreateComponent,
     AddedComponent,
-    Custom404Component
+    Custom404Component,
+    UserPostsComponent
   ],
   imports: [
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),

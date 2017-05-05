@@ -5,13 +5,15 @@
             <button md-button style="margin: auto;" (click)="goToAddQuote()">ADD QUOTE</button>
         </div>
         <div *ngFor="let quote of quotes">
-            <md-card>
+            <div style="margin: 20px">
+                <md-card>
                 <md-card-subtitle>{{ quote.user.first_name }} {{ quote.user.last_name }} | {{ quote.book.title }}</md-card-subtitle>
                 <div style="margin: 20px">
                     <p>{{ quote.quote}}</p>
                 </div>
-                <button md-button (click)="deleteQuote(quote.id)">Delete comment</button>
+                <button md-raised-button color="warn" (click)="deleteQuote(quote.id)">Delete quote</button>
             </md-card>
+            </div> 
         </div>
     </div>
 </md-card>

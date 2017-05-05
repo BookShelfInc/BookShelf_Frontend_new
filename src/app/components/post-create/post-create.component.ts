@@ -16,24 +16,24 @@ export class PostCreateComponent implements OnInit {
   model: any = {}
 
   constructor(private blogService: BlogService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit() {
   }
 
-  addPost(){
+  addPost() {
     let currentUser = JSON.parse(localStorage.getItem('user'));
-      if (currentUser && currentUser.token) {
-          console.log('here');
-          const post: PostCreate = {
-              title: this.model.title,
-              content: this.editorContent,
-              publish_date: new Date().toDateString(),
-              author: currentUser.user.id,
-          };
-          console.log(post);
-          console.log(this.blogService.addPost(post));
-          this.router.navigate(['/blog']);
+    if (currentUser && currentUser.token) {
+      console.log('here');
+      const post: PostCreate = {
+        title: this.model.title,
+        content: this.editorContent,
+        publish_date: new Date().toDateString(),
+        author: currentUser.user.id,
+      };
+      console.log(post);
+      console.log(this.blogService.addPost(post));
+      this.router.navigate(['/blog']);
     }
     console.log(this.model.review);
   }

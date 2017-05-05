@@ -14,7 +14,8 @@
                 <h3>Author - {{ book.book.author.first_name }} {{ book.book.author.last_name }}</h3>
                 <h4>Genre - {{ book.book.genre }}</h4>
             </md-card-content>
-                <button md-button color="warn" (click)="goToDetail(book.book)">Book Detail</button>
+                <button md-ripple="white" md-button (click)="goToDetail(book.book)">Book Detail</button>
+                <button md-raised-button color="warn" (click)="removeBook(book.id)">Remove</button>
             </md-card>
         </div>
     </div>

@@ -26,7 +26,7 @@ export class BlogListComponent implements OnInit {
   can = false;
 
   constructor(private blogService: BlogService,
-    private router: Router) { }
+              private router: Router) { }
 
   ngOnInit() {
     let currentUser = JSON.parse(localStorage.getItem('user'));

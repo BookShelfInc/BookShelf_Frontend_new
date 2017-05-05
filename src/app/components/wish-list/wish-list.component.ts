@@ -21,6 +21,10 @@ export class WishListComponent implements OnInit{
 
 
     ngOnInit() {
+        this.getBooks();
+    }
+
+    getBooks() {
         this.userService.getWishList().subscribe(
             data => {
                 this.books = data as WishList[];
@@ -37,6 +41,11 @@ export class WishListComponent implements OnInit{
         console.log(book.id);
     }
 
-
-    
+    removeBook(id: number) {
+        this.userService.deleteWishList(id).subscribe(
+            data => {
+                this.getBooks();
+            }
+        );
+    }
 }

@@ -19,6 +19,10 @@ export class QuoteComponent implements OnInit {
                 private userService: UserService) {} 
 
     ngOnInit() {
+        this.getQuote();
+    }
+
+    getQuote() {
         this.userService.getQuote().subscribe(
             data => {
                 this.quotes = data as Quote[];
@@ -30,8 +34,11 @@ export class QuoteComponent implements OnInit {
     }
 
     deleteQuote(id: number) {
-        console.log(id.toString());
-        this.userService.deleteQuote(id);
+        this.userService.deleteQuote(id).subscribe(
+            data => {
+                this.getQuote();
+            }
+        );
     }
 
     goToAddQuote(){

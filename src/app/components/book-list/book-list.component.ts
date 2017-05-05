@@ -41,8 +41,7 @@ export class BookListComponent implements OnInit {
     books: Book[];
     loggedInBool: boolean;
 
-    private next: number = 0;
-    staggeringBooks: Book[];
+
 
     constructor(private bookService: BookService,
         private userService: UserService,
@@ -50,12 +49,7 @@ export class BookListComponent implements OnInit {
         public snackBar: MdSnackBar,
         public authService: AuthorizationService, ) { }
 
-    doNext() {
-        if (this.next < this.books.length) {
-            this.staggeringBooks.push(this.books[this.next++]);
-        }
-        
-    }
+
     ngOnInit() {
         this.bookService.getAllBooks().subscribe(
             data => {

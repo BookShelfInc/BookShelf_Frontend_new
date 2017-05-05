@@ -11,13 +11,15 @@ import { UserService } from '../../services/user.service';
     templateUrl: 'wish-list.component.html',
     styleUrls: ['wish-list.component.css']
 })
-export class WishListComponent implements OnInit{
+export class WishListComponent implements OnInit {
 
     pageTitle = 'My wishlist';
     books: WishList[];
 
     constructor(private userService: UserService,
-                private router: Router) { }
+        private router: Router) {
+        this.getBooks();
+    }
 
 
     ngOnInit() {
@@ -36,7 +38,7 @@ export class WishListComponent implements OnInit{
         );
     }
 
-    goToDetail(book: Book){
+    goToDetail(book: Book) {
         this.router.navigate(['/book', book.id]);
         console.log(book.id);
     }

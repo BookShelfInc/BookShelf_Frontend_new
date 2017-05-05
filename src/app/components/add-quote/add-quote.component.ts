@@ -32,7 +32,7 @@ export class AddQuoteComponent implements OnInit {
         this.filteredStates = this.stateCtrl.valueChanges
             .startWith(null)
             .map(name => this.filterStates(name));
-
+            
     }
 
     ngOnInit() {

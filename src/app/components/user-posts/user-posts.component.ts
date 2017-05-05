@@ -15,7 +15,9 @@ export class UserPostsComponent implements OnInit {
   posts: Post[];
 
   constructor(private blogService: BlogService,
-    private router: Router) { }
+    private router: Router) {
+    this.getUsersPost();
+  }
 
   ngOnInit() {
     this.getUsersPost();

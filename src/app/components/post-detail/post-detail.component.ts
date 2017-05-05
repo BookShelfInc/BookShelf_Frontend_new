@@ -93,8 +93,10 @@ export class PostDetailComponent implements OnInit {
             console.log(this.blogService.postComment(comment));
             this.written = true;
             this.post.comments.push(commentPush);
+            this.model.comment = '';
         }
         console.log(this.model.review);
+        
     }
 
     checkIsLiked() {

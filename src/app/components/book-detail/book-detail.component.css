@@ -16,3 +16,10 @@ review-list {
     margin-left: 30px;
     margin-right: 30px;
 }
+
+.form {
+    width: 70%;    
+}
+.sendb button{
+    background-color: #FEE9E8;
+}

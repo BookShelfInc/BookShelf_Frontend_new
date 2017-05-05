@@ -4,8 +4,8 @@
         <md-card-subtitle>
             By {{ post.author.first_name }} {{ post.author.last_name }} <br> {{ post.publish_date }}
         </md-card-subtitle>
-        <md-card-content> {{ post.content }} </md-card-content>
-
+        <!--<md-card-content> {{ post.content }} </md-card-content>-->
+        <div [froalaView]="post.content"></div>
         <md-card-actions>
             <button *ngIf="canLike" md-ripple="white" md-button (click)="addUpvote()">
               <md-icon *ngIf="!liked">favorite</md-icon>
@@ -27,8 +27,9 @@
             <md-input-container style="width: 100%;">
                     <input mdInput [(ngModel)]="model.comment" placeholder="Comment">
                 </md-input-container>
-                <button *ngIf="!written" md-fab style="margin-bottom: 10px" (click)="addComment()">Send</button>
-                <button *ngIf="written" disabled md-fab style="margin-bottom: 10px" (click)="addComment()">Sended!</button>
+                <button md-button style="margin-bottom: 10px" (click)="addComment()">Send</button>
+                <!--<button *ngIf="!written" md-button style="margin-bottom: 10px" (click)="addComment()">Send</button>-->
+                <!--<button *ngIf="written" disabled md-button style="margin-bottom: 10px" (click)="addComment()">Sended!</button>-->
         </div>
     </div>
     <h2>Comments:</h2>
